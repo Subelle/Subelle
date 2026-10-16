@@ -125,13 +125,19 @@ section > .wrap > .intro { color: var(--muted); max-width: var(--measure); margi
 .step.translate { --c: var(--original); }
 .step.start { --c: var(--shot); }
 .step.check { --c: var(--cue-out); }
+.step.deliver { --c: var(--wave); }
+.step.settings { --c: #8FB4FF; }
 
 /* — Captures — */
 .gallery { display: grid; gap: 2.5rem 3rem; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); align-items: start; }
-.gallery figure { margin: 0; }
+.gallery figure { margin: 0; display: flex; flex-direction: column; align-items: center; }
 .gallery .wide { grid-column: 1 / -1; }
-.gallery img { width: 100%; }
-.gallery figcaption { color: var(--muted); font-size: .97rem; margin-top: .6rem; max-width: var(--measure); }
+/* Cadre de même proportion pour toutes les captures : les légendes s'alignent, chacune centrée sous son image */
+.gallery img { width: 100%; aspect-ratio: 5 / 6; object-fit: contain; }
+.gallery .wide img { aspect-ratio: auto; }
+/* Une seule colonne (téléphone) : chaque image à sa taille, sans cadre commun */
+@media (max-width: 760px) { .gallery img { aspect-ratio: auto; } }
+.gallery figcaption { color: var(--muted); font-size: .97rem; margin-top: .6rem; max-width: var(--measure); text-align: center; }
 
 /* — Télécharger — */
 .get { background: var(--track); color: #E8ECF4; }
@@ -178,6 +184,7 @@ footer p { margin: .3rem 0; max-width: 48rem; }
 }
 .scenario.create { --c: var(--wave); }
 .scenario.translate { --c: var(--original); }
+.scenario.deliver { --c: var(--shot); }
 .scenario .req { color: var(--muted); font-size: .95rem; }
 .scenario figure { margin: 0; }
 .scenario img { width: 100%; }
